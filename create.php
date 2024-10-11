@@ -1,3 +1,28 @@
+<?php
+include 'config.php';
+
+$message = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
+    $stock = $_POST['stock'];
+
+    try {
+        $sql = "INSERT INTO Libros (nombre, descripcion, precio, stock) VALUES (:nombre, :descripcion, :precio, :stock)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['nombre' => $nombre, 'descripcion' => $descripcion, 'precio' => $precio, 'stock' => $stock]);
+
+        $message = 'Libro añadido con éxito!';
+    } catch (PDOException $e) {
+        $message = 'Error al añadir el libro: ' . $e->getMessage();
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
