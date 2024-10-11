@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'Veterinaria';
+$db   = 'Libreria';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
