@@ -1,14 +1,15 @@
 <?php
 include 'config.php';
 
-$stmt = $pdo->query('SELECT * FROM jabones');
+$stmt = $pdo->query('SELECT * FROM Animal');
 $jabones = $stmt->fetchAll();
+var_dump($jabones);
 ?>
 
-<h2>Listado de Jabones</h2>
+<h2>Listado de perros</h2>
 
-<!-- Botón para crear un nuevo jabón -->
-<a href="create.php">Crear nuevo Jabón</a>
+<!-- Botón para crear un nuevo perro -->
+<a href="create.php">Crear nuevo Perro</a>
 <br><br>
 
 <ul>

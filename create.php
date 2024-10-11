@@ -5,18 +5,18 @@ $message = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $precio = $_POST['precio'];
-    $stock = $_POST['stock'];
+    $raza = $_POST['raza'];
+    $peso = $_POST['peso'];
+    $altura = $_POST['altura'];
 
     try {
-        $sql = "INSERT INTO jabones (nombre, descripcion, precio, stock) VALUES (:nombre, :descripcion, :precio, :stock)";
+        $sql = "INSERT INTO Animal (nombre, raza, peso, altura) VALUES (:nombre, :raza, :peso, :altura)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['nombre' => $nombre, 'descripcion' => $descripcion, 'precio' => $precio, 'stock' => $stock]);
+        $stmt->execute(['nombre' => $nombre, 'raza' => $raza, 'peso' => $peso, 'altura' => $altura]);
 
-        $message = 'Jabón añadido con éxito!';
+        $message = 'Perro añadido con éxito!';
     } catch (PDOException $e) {
-        $message = 'Error al añadir el jabón: ' . $e->getMessage();
+        $message = 'Error al añadir el perro: ' . $e->getMessage();
     }
 }
 ?>
@@ -26,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Añadir Jabón</title>
+    <title>Añadir Perro</title>
 </head>
 <body>
-<h2>Añadir nuevo Jabón</h2>
+<h2>Añadir nuevo perro</h2>
 
 <?php if (!empty($message)): ?>
     <p><?= $message ?></p>
@@ -39,16 +39,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" id="nombre" required>
     <br>
-    <label for="descripcion">Descripción:</label>
-    <textarea name="descripcion" id="descripcion"></textarea>
+    <label for="raza">Raza:</label>
+    <textarea name="Raza" id="Raza"></textarea>
     <br>
-    <label for="precio">Precio:</label>
-    <input type="text" name="precio" id="precio" required>
+    <label for="peso">Precio:</label>
+    <input type="text" name="peso" id="peso" required>
     <br>
-    <label for="stock">Stock:</label>
-    <input type="number" name="stock" id="stock" required>
+    <label for="altura">Stock:</label>
+    <input type="number" name="altura" id="altura" required>
     <br>
-    <input type="submit" value="Añadir Jabón">
+    <input type="submit" value="Añadir Perro">
 </form>
 
 </body>
