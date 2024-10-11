@@ -12,18 +12,24 @@ $animales = $stmt->fetchAll();
 <a href="create.php">Crear nuevo Perro</a>
 <br><br>
 
-<ul>
-<?php foreach ($animales as $animal): ?>
-    <li>
-        <?php echo $animal['nombre']; ?> - <?php echo $animal['peso']; ?> Kg
-        <a href="edit.php?id=<?php echo $animal['id']; ?>">Editar</a>
-        <a href="delete.php?id=<?php echo $animal['id']; ?>">Eliminar</a>
-    </li>
-
-    <table>
+<table border="1">
+    <thead>
         <tr>
-            <td></td>
+            <th>Nombre</th>
+            <th>Peso (Kg)</th>
+            <th>Acciones</th>
         </tr>
-    </table>
-<?php endforeach; ?>
-</ul>
+    </thead>
+    <tbody>
+        <?php foreach ($animales as $animal): ?>
+        <tr>
+            <td><?php echo $animal['nombre']; ?></td>
+            <td><?php echo $animal['peso']; ?> Kg</td>
+            <td>
+                <a href="edit.php?id=<?php echo $animal['id']; ?>">Editar</a>
+                <a href="delete.php?id=<?php echo $animal['id']; ?>">Eliminar</a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
