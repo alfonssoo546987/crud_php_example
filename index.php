@@ -2,8 +2,8 @@
 include 'config.php';
 
 $stmt = $pdo->query('SELECT * FROM Animal');
-$jabones = $stmt->fetchAll();
-var_dump($jabones);
+$animales = $stmt->fetchAll();
+var_dump($animales);
 ?>
 
 <h2>Listado de perros</h2>
@@ -13,11 +13,11 @@ var_dump($jabones);
 <br><br>
 
 <ul>
-<?php foreach ($jabones as $jabon): ?>
+<?php foreach ($animales as $animal): ?>
     <li>
-        <?php echo $jabon['nombre']; ?> - $<?php echo $jabon['precio']; ?>
-        <a href="edit.php?id=<?php echo $jabon['id']; ?>">Editar</a>
-        <a href="delete.php?id=<?php echo $jabon['id']; ?>">Eliminar</a>
+        <?php echo $animal['nombre']; ?> - $<?php echo $animal['peso']; ?>
+        <a href="edit.php?id=<?php echo $animal['id']; ?>">Editar</a>
+        <a href="delete.php?id=<?php echo $animal['id']; ?>">Eliminar</a>
     </li>
 <?php endforeach; ?>
 </ul>
