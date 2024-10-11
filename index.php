@@ -3,7 +3,7 @@ include 'config.php';
 
 $stmt = $pdo->query('SELECT * FROM Animal');
 $animales = $stmt->fetchAll();
-var_dump($animales);
+// var_dump($animales); Muestra el contenido en forma de array
 ?>
 
 <h2>Listado de perros</h2>
@@ -15,9 +15,15 @@ var_dump($animales);
 <ul>
 <?php foreach ($animales as $animal): ?>
     <li>
-        <?php echo $animal['nombre']; ?> - $<?php echo $animal['peso']; ?>
+        <?php echo $animal['nombre']; ?> - <?php echo $animal['peso']; ?> Kg
         <a href="edit.php?id=<?php echo $animal['id']; ?>">Editar</a>
         <a href="delete.php?id=<?php echo $animal['id']; ?>">Eliminar</a>
     </li>
+
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
 <?php endforeach; ?>
 </ul>
